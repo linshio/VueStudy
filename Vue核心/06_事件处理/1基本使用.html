@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+	<h1>welcome {{name}}</h1>
+<!--	<button v-on:click="showInfo">click</button>-->
+	<button @click="showInfo">click1</button>
+	<!--带参数的回调-->
+	<button @click="showInfo(22,$event)">click2</button>
+</div>
+
+<script type="text/javascript">
+	const vm = new Vue({
+		el:'#root',
+		data() {
+			return {
+				name:'az',
+			};
+		},
+		methods:{
+			showInfo(num,e){
+				// e.target.innerHTML = 'out'
+				alert(num)
+				console.log(e)
+			}
+		}
+	})
+</script>
+</body>
+</html>

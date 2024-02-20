@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../../js/vue.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+	let obj1 = {x:100}
+	let obj2 = {y:200}
+	//通过obj2数据代理obj1中的数据
+	Object.defineProperty(obj2,'x',{
+		get() {
+			return obj1.x
+		},
+		set(v) {
+			obj1.x = v
+		}
+	})
+</script>
+</body>
+</html>

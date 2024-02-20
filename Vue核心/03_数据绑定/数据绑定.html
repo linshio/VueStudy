@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+	<!--v-bind:为单向数据绑定-->
+	单向数据绑定: <input type="text" v-bind:value="name">
+	<!--v-model:为双向向数据绑定-->
+	双向数据绑定: <input type="text" v-model:value="name">
+	<hr>
+	<p>以下为简写形式</p>
+	<!--v-bind:为单向数据绑定-->
+	单向数据绑定: <input type="text" :value="name">
+	<!--v-model:为双向向数据绑定-->
+	双向数据绑定: <input type="text" v-model="name">
+</div>
+<script type="text/javascript">
+	 new Vue({
+			el:'#root',
+			data:{
+					name:'az'
+			}
+	})
+</script>
+</body>
+</html>

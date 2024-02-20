@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+	姓：<input type="text" v-model="firstName"> <br><br>
+	名：<input type="text" v-model="lastName"> <br><br>
+	姓名：<input type="text" v-model="fullName">
+</div>
+
+<script type="text/javascript">
+	new Vue({
+		el:'#root',
+		data() {
+			return {
+				firstName:'a',
+				lastName:'z',
+			};
+		},
+		//计算属性配置
+		computed:{
+			fullName:{
+				//get的调用的时机
+				//1初次杜群fullName的时候
+				//2所依赖的数据发生变化的时候
+				 get(){
+					 console.log('get has been')
+					 return this.firstName+'-'+this.lastName
+				 },
+				 set(value){
+					 console.log('set has been')
+					 const arr = value.split('-')
+					 this.firstName =  arr[0]
+					 this.lastName =  arr[1]
+				 }
+			}
+		}
+	})
+</script>
+</body>
+</html>

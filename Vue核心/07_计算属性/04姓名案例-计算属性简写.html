@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+	姓：<input type="text" v-model="firstName"> <br><br>
+	名：<input type="text" v-model="lastName"> <br><br>
+	姓名：<span>{{fullName}}</span>
+</div>
+
+<script type="text/javascript">
+	new Vue({
+		el:'#root',
+		data() {
+			return {
+				firstName:'a',
+				lastName:'z',
+			};
+		},
+		//计算属性配置
+		//确定只读不改可以使用 属性配置的简写模式
+		computed:{
+			fullName(){
+				return this.firstName+'-'+this.lastName
+			}
+		}
+	})
+</script>
+</body>
+</html>

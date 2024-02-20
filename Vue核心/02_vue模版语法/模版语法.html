@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+	<h1>插值语法</h1>
+	<h3>hello , {{name}}</h3>
+	<hr>
+	<h1>指令语法</h1>
+	<a v-bind:href="url">relink1</a>
+	<a :href="url">relink2</a>
+</div>
+
+
+
+<script>
+    Vue.config.productionTip = false //阻止Vue的默认提示
+		new Vue({
+				el:'#root',
+				data:{
+						name:'Lisa',
+						url:'https://www.ntdm9.com/'
+				}
+		})
+</script>
+</body>
+</html>
