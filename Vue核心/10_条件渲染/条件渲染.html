@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+	<!--使用v-show做条件渲染 高频率的切换使用v-show-->
+	<h1 v-show="change()">welcome {{name}}</h1>
+	<!--使用v-if做条件渲染 v-if效率低一点但是更加灵活-->
+	<h1 v-if="change()">welcome {{name}}</h1>
+	<div>当前的n值为{{n}}</div>
+	<button @click="n++">click=>n++</button>
+<!--	<div v-show="n%2">A</div>-->
+<!--	<div v-show="n%3">B</div>-->
+<!--	<div v-show="n%4">C</div>-->
+
+<!--	<div v-if="n===2">A</div>-->
+<!--	<div v-else-if="n===3">B</div>-->
+<!--	<div v-else>C</div>-->
+
+	<!--template与v-if配合使用不会破坏结构 直接显示内部的元素-->
+	<template v-if="n===1">
+		<h3>A</h3>
+		<h3>B</h3>
+		<h3>C</h3>
+	</template>
+</div>
+<script>
+	new Vue({
+		el:'#root',
+		data:{
+			name:'az',
+			flag:false,
+			n:0
+		},
+		methods:{
+			change() {
+				return this.flag
+			}
+		}
+	})
+</script>
+</body>
+</html>

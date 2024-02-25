@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+	<!--遍历数组-->
+	<h2>人员列表</h2>
+	<ul>
+		<li v-for="(p,index) in persons" :key="index">{{index}}=>{{p.name}}={{p.age}}</li>
+	</ul>
+
+	<!--遍历对象-->
+	<h2>汽车信息</h2>
+	<ul>
+		<li v-for="(value,key) in car" :key="key">{{value}}={{key}}</li>
+	</ul>
+</div>
+<script>
+	new Vue({
+		el:'#root',
+		data:{
+			persons:[
+				{id:'001',name:'qw',age:15},
+				{id:'002',name:'er',age:16},
+				{id:'003',name:'rt',age:18}
+			],
+			car:{
+				name:'a8',
+				price:'66w',
+				color:'black'
+			}
+		},
+		methods:{
+
+		}
+	})
+</script>
+</body>
+</html>

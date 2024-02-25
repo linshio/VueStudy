@@ -4,11 +4,39 @@
 	<meta charset="UTF-8">
 	<title>Title</title>
 	<script src="../../js/vue.js"></script>
+	<style>
+		.basic{
+			/*1*/
+		}
+		.happy{
+			/*2*/
+		}
+		.sad{
+			/*3*/
+		}
+		.normal{
+			/*4*/
+		}
+		.atguigu1{
+			/*5*/
+		}
+		.atguigu2{
+			/*6*/
+		}
+		.atguigu3{
+			/*7*/
+		}
+	</style>
 </head>
 <body>
 
 <div id="root">
-
+	<!--绑定class样式--字符串的写法，适用于：样式的类名不确定，需要动态指定-->
+	<div class="basic" :class="mood" id="demo" @click="changeMood">{{name}}</div>
+	<!--绑定class样式--数组的写法，适用于：要绑定的样式个数不确定、名字页不确定-->
+	<div class="basic" :class="arr" id="dd">{{name}}</div>
+	<!--绑定class样式--对象的写法，在已经确定的两种样式中进行切换 true为启用-->
+	<div class="basic" :class="classObj" id="ddd">{{name}}</div>
 </div>
 
 <script type="text/javascript">
@@ -16,9 +44,27 @@
 	//	1.所有Vue管理的函数最好写成普通的函数，这样this的指向才是vm或组件实例对象
 	//	2.所有不被Vue所管理的函数（定时器的回调函数、ajax的回调函数等）最好写成箭头函数，
 	//    这样this的指向才是vm或组件的实例对象
-	const vm = new Vue({
+	new Vue({
+		//1是样式的基础 2～4是三选一 5～7可以全选
 		el:'#root',
-
+		data:{
+			name:'az',
+			mood:'normal',
+			//5～7可以全选
+			arr:['atguigu1','atguigu2','atguigu3'],
+			classObj:{
+				atguigu1:false,
+				atguigu2:false
+			}
+		},
+		methods:{
+			//2～4是三选一
+			changeMood(){
+				const arr = ['happy','sad','normal']
+				const index = Math.floor(Math.random()*3)
+				this.mood=arr[index]
+			}
+		}
 	})
 
 </script>
