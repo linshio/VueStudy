@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+	<form @submit.prevent="demo">
+		账号：<input type="text" v-model="userInfo.account"> <br/> <br/>
+		密码：<input type="password" v-model="userInfo.password"> <br/> <br/>
+		性别：
+		男 <input type="radio" name="sex" v-model="userInfo.sex" value="male">
+		女 <input type="radio" name="sex" v-model="userInfo.sex" value="female"> <br/> <br/>
+		<!--number类型修饰只能输入数字 v-model.number会将字符串转为数字-->
+		年龄：<input type="number" name="age" v-model.number="userInfo.age"> <br/> <br/>
+		爱好：
+		吃饭 <input type="checkbox" value="eat" v-model="userInfo.hobby">
+		睡觉 <input type="checkbox" value="sleep" v-model="userInfo.hobby">
+		学习 <input type="checkbox" value="study" v-model="userInfo.hobby"> <br/> <br/>
+		所属地区：
+		<select v-model="userInfo.addr">
+			<option value="">请选择校区</option>
+			<option value="beijing">北京</option>
+			<option value="shanghai">上海</option>
+			<option value="guangzhou">广州</option>
+		</select><br/> <br/>
+		其他信息：
+		<!--v-model.lazy能够防止实时刷新 失去焦点后会进行收集-->
+		<textarea v-model.lazy="userInfo.text"></textarea><br/> <br/>
+		<input type="checkbox" v-model="userInfo.checked">阅读并接受 <a href="#">《用户须知》</a>
+		<button>提交</button>
+	</form>
+</div>
+<script>
+ const vm = new Vue({
+		el:'#root',
+		data:{
+			userInfo:{
+				account:'',
+				password:'',
+				sex:'',
+				hobby:[],
+				addr:'',
+				text:'',
+				checked:'',
+				age:''
+			}
+			// account:'',
+			// password:'',
+			// sex:'',
+			// hobby:[],
+			// addr:'',
+			// text:'',
+			// checked:''
+		},
+		methods:{
+			demo(){
+				console.log(JSON.stringify(this._data.userInfo))
+			}
+		}
+	})
+</script>
+</body>
+</html>
