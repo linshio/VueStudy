@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+
+</div>
+<script>
+ const vm = new Vue({
+		el:'#root',
+		data :{
+			userInfo:{
+				account:'',
+				password:'',
+				sex:'',
+				hobby:[],
+				addr:'',
+				text:'',
+				checked:'',
+				age:''
+			}
+			// account:'',
+			// password:'',
+			// sex:'',
+			// hobby:[],
+			// addr:'',
+			// text:'',
+			// checked:''
+		},
+		methods:{
+			demo(){
+				console.log(JSON.stringify(this._data.userInfo))
+			}
+		}
+	})
+</script>
+</body>
+</html>
