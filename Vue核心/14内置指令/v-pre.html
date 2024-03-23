@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../../js/vue.js"></script>
+<!--  <script src="../../js/dayjs.min.js"></script>-->
+</head>
+<body>
+<div id="root">
+  <h2 v-pre>Vue is very simple</h2>
+  <h2>当前n的值为{{n}}</h2>
+  <button @click="n++">点击n++</button>
+</div>
+<script>
+  /**
+   *  v-pre指令（没有值）
+   *    1.跳过其所在节点的编译过程
+   *    2.可以利用它跳过没有使用到vue指令的语法、没有使用差值语法的节点，会加快编译
+   */
+  new Vue({
+    el:'#root',
+    data:{
+      n:1
+    }
+  })
+</script>
+</body>
+</html>

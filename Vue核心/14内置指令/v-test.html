@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../../js/vue.js"></script>
+  <script src="../../js/dayjs.min.js"></script>
+</head>
+<body>
+<div id="root">
+  <!--v-test指令会将其中的内容全都替换掉-->
+  <h2 v-text="name">v-test指令=></h2>
+  <!--而差值语法并不会-->
+  <h2 >差值语法=>{{name}}</h2>
+</div>
+<script>
+  new Vue({
+    el:'#root',
+    data:{
+      name:'az'
+    }
+  })
+</script>
+</body>
+</html>

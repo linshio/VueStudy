@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../../js/vue.js"></script>
+  <script src="../../js/dayjs.min.js"></script>
+</head>
+<body>
+<div id="root">
+  <div>你好 {{name}}</div>
+  <div v-html="str"></div>
+  <div v-html="str1"></div>
+</div>
+<script>
+  /**
+   *  v-html 指令：
+   *    1.作用：向指定节点中渲染包含html结构的内容
+   *    2.与插值语法的区别：
+   *      11.v-html会替换掉节点中的所有内容 而{{xx}}则不会
+   *      22.v-html可以识别html结构
+   *    3.注意：v-html会有安全的问题
+   *      11在网站上动态渲染任意的html是非常危险的会导致xss攻击
+   *      22要在可信的内容上使用v-html，不要再用户的提交内容上进行使用
+   *
+   */
+  new Vue({
+    el:'#root',
+    data:{
+      name:'az',
+      str:'哈哈',
+      str1:'<a href="http://localhost:8080">' +
+          '此处可以嵌入js代码盗取cookie进而伪装成当前用户绕过登录认证</a>'
+    }
+  })
+</script>
+</body>
+</html>
