@@ -14,16 +14,49 @@
 -->
   <h2>当前n的值为{{n}}</h2>
   <h2>v-big放大十倍之后的值为<span v-big="n"></span></h2>
+  <h2>v-big放大十倍之后的值为<span v-big-number="n"></span></h2>
   <button @click="n++">点击n++</button>
   <hr>
   <input type="text" v-fbind:value="n">
 </div>
 <script>
   /**
-   *  v-pre指令（没有值）
-   *    1.
-   *    2.
+   *  一、定义语法
+   *    1局部指令
+   *      new Vue({
+   *        directives:{指令名: 配置对象 or 回调函数}
+   *      })
+   *
+   *    2全局指令：
+   *      Vue.directive(指令名，配置对象 or 回调函数)
+*      二、配置对象中常用的三个回调函数
+   *      1) bind 指令与元素成功绑定的时候进行调用
+   *      2) inserted 指令所在元素被插入页面的时候进行调用
+   *      3) update 指令所在的模板结构被重新解析的时候进行调用
+   *
+*      三、注意：
+   *      1指令进行定义的时候不需要加上v- 但是在使用的是偶需要加上v-
+   *      2指令名如果是多个单词，需要使用 - 进行连接命名
    */
+
+  //定义全局指令的写法
+  // Vue.directive('fbind',{
+  //   //element.value =  binding.value
+  //   // element.focus()
+  //   // 1指令与元素成功绑定的时候（一上来就会调用一一次）
+  //   bind(element,binding){
+  //     element.value = binding.value
+  //   },
+  //   //指令所在的元素被插入页面的时候
+  //   inserted(element,binding){
+  //     element.focus()
+  //   },
+  //   //3指令所在的模版被重新解析的时候
+  //   update(element,binding){
+  //     element.value = binding.value
+  //   }
+  // })
+
   new Vue({
     el:'#root',
     data:{
@@ -42,10 +75,32 @@
       big(element,binding) {
         // console.log(element)
         // console.log(binding)
-        element.innerHTML = binding.value * 10
+        element.innerHTML = binding.value * 10 
       },
-      fbind(element,binding){
+      //如果 指令中出现了 多个单词应该使用-进行拼接
+      // 并且绑定函数的时候需要使用原来的方式 不能进行简写
+      'big-number':function (element,binding) {
+        // console.log(element)
+        // console.log(binding)
+        element.innerHTML = binding.value * 10
+      }
 
+      ,
+      fbind:{
+        //element.value =  binding.value
+        // element.focus()
+        // 1指令与元素成功绑定的时候（一上来就会调用一一次）
+        bind(element,binding){
+          element.value = binding.value
+        },
+        //指令所在的元素被插入页面的时候
+        inserted(element,binding){
+          element.focus()
+        },
+        //3指令所在的模版被重新解析的时候
+        update(element,binding){
+          element.value = binding.value
+        }
       }
     }
   })
