@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+  <h2>当前n的值为{{n}}</h2>
+  <button @click="add()">button</button>
+</div>
+<script>
+  new Vue({
+    el:'#root',
+    data:{
+      n:1
+    },
+    methods:{
+      add() {
+        this.n++;
+      }
+    },
+    //此时我们无法通过vm访问到data中的数据、methods中的方法
+    beforeCreate(){
+      console.log('beforeCreate')
+    },
+    //可以通过vm访问到
+    created(){
+
+    }
+  })
+</script>
+</body>
+</html>
