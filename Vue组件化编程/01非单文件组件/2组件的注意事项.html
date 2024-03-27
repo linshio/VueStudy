@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模板文件</title>
+  <script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+  <h1>{{msg}}</h1>
+<!--  <school></school>-->
+<!--  <MySchool></MySchool>-->
+  <my-school></my-school>
+</div>
+<script>
+  /**
+   * 几个注意的点：
+   *  1.关于组件的名：
+   *    一个单词的组成：
+   *      第一种写法（首字母小写）：school
+   *      第一种写法（首字母大写）：School
+   *      多个单词的组成：
+   *      第一种写法 my-school
+   *      第二种写法 MySchool （该写法需要Vue的脚手架的支持）
+   *      备注：
+   *      1）组件中应该尽可能的会比html中已经存在的元素名称
+   *      2）可以使用name配置项指定组件在开发者工作中呈现的名字
+   *    2.关于组件标签：
+   *    第一种写法：
+   *      <school></school>
+   *    第二种写法：
+   *      <school/>
+   *      注意：不使用脚手架的时候<school/>会导致后续组件不能渲染
+   *
+   *     3.一个简写的方式：
+   *     const school = Vue.extend(options)可以简写为
+   *     const school = options
+   */
+
+  //1创键模块 定义组件
+  const school = {
+    name:'az',
+    template:`<div><h2>学校名称：{{schoolName}}</h2><h2>学校地址：{{address}}</h2></div>`,
+    data(){
+      return {
+        schoolName:'azSchool',
+        address:'qwer'
+      }
+    }
+  }
+
+  // const school = Vue.extend({
+  //   name:'az',
+  //   template:`<div><h2>学校名称：{{schoolName}}</h2><h2>学校地址：{{address}}</h2></div>`,
+  //   data(){
+  //     return {
+  //       schoolName:'azSchool',
+  //       address:'qwer'
+  //     }
+  //   }
+  // })
+
+  new Vue({
+    el:'#root',
+    data:{
+      msg:'hello'
+    },
+    //2局部引用模块 vue redis cloud mogodb
+    components:{
+      // school:school
+      //多个字母的写法
+      'my-school':school
+      // MySchool:school
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模板文件</title>
+  <script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+  <school>
+  </school>
+
+</div>
+<script>
+  //组件的嵌套使用
+
+  const student = {
+    name:'student',
+    template:`<div><h2>学生名称：{{studentName}}</h2><h2>学生年龄：{{age}}</h2></div>`,
+    data(){
+      return {
+        studentName:'az',
+        age:22
+      }
+    }
+  }
+
+  //定义组件
+  const school = {
+    name:'school',
+    template:`<div><h2>学校名称：{{schoolName}}</h2><h2>学校地址：{{address}}</h2><student></student></div>`,
+    data(){
+      return {
+        schoolName:'azSchool',
+        address:'qwer'
+      }
+    },
+    components:{
+      student
+    }
+  }
+
+  const school = {
+    name:'school',
+    template:`<div>hello</div>`,
+    data(){
+      return {
+        schoolName:'azSchool',
+        address:'qwer'
+      }
+    },
+    components:{
+      student
+    }
+  }
+
+  new Vue({
+    el:'#root',
+    data:{
+      msg:'hello'
+    },
+    //2局部引用模块 vue redis cloud mogodb
+    components:{
+      // school:school
+      //多个字母的写法
+      school
+      // MySchool:school
+    }
+  })
+</script>
+</body>
+</html>
