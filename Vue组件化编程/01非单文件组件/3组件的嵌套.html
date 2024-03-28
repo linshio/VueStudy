@@ -7,15 +7,12 @@
 </head>
 <body>
 <div id="root">
-  <school>
-  </school>
 
 </div>
 <script>
   //组件的嵌套使用
 
   const student = {
-    name:'student',
     template:`<div><h2>学生名称：{{studentName}}</h2><h2>学生年龄：{{age}}</h2></div>`,
     data(){
       return {
@@ -27,7 +24,6 @@
 
   //定义组件
   const school = {
-    name:'school',
     template:`<div><h2>学校名称：{{schoolName}}</h2><h2>学校地址：{{address}}</h2><student></student></div>`,
     data(){
       return {
@@ -40,8 +36,8 @@
     }
   }
 
-  const school = {
-    name:'school',
+  const hello = {
+    name:'hello',
     template:`<div>hello</div>`,
     data(){
       return {
@@ -54,17 +50,32 @@
     }
   }
 
+  //定义app组件
+  const app = Vue.extend({
+    template:`
+      <div>
+        <hello></hello>
+        <school></school>
+      </div>
+    `,
+    components:{
+      school:school,
+      hello:hello
+    }
+  })
+
+
   new Vue({
     el:'#root',
+    template:`
+      <div><app></app></div>
+    `,
     data:{
       msg:'hello'
     },
-    //2局部引用模块 vue redis cloud mogodb
+    //2局部引用模块
     components:{
-      // school:school
-      //多个字母的写法
-      school
-      // MySchool:school
+      app
     }
   })
 </script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模板文件</title>
+  <script src="../../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+  <school></school>
+</div>
+<script>
+  //定义组件
+  const school = {
+    template:`<div><h2>学校名称：{{schoolName}}</h2><h2>学校地址：{{address}}</h2></div>`,
+    data(){
+      return {
+        schoolName:'azSchool',
+        address:'qwer'
+      }
+    }
+  }
+
+  console.log("school==>", school)
+  new Vue({
+    el:'#root',
+    components:{
+      school
+    }
+  })
+</script>
+</body>
+</html>
