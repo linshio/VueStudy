@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模板文件</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+<div id="az">
+  <school></school>
+</div>
+<script>
+  /**
+   * 1.一个重要的内置关系 VueComponent.prototype.__proto__ === Vue.prototype
+   * 2.为什么要有设个关系：让组件实例对象vc可以访问到Vue原型上的属性与方法
+   * 有点像继承 自己找不到就去父类的身上找下
+   *
+   *
+   */
+
+  Vue.prototype.x = 99
+
+      //定义组件
+  const school = Vue.extend({
+        template: `
+          <div><h2>学校名称：{{ schoolName }}</h2>
+            <h2>学校地址：{{ address }}</h2>
+            <button @click="showName">button</button>
+          </div>`,
+        data() {
+          return {
+            schoolName: 'azSchool',
+            address: 'qwer'
+          }
+        },
+        methods: {
+          showName() {
+            alert(this.x)
+          }
+        }
+      })
+      //创建一个vm
+  new Vue({
+    el:'#az',
+    components:{
+      school
+    }
+  })
+
+  console.log(school.prototype.__proto__===Vue.prototype)
+
+/*  //定义一个构造函数
+  function App(){
+    this.a=1
+    this.b=2
+  }
+  //创键第一个Demo的实例对象
+  const az = new App()
+  //通过显示原型属性操作原型对象并追加一个x属性，值为99
+  App.prototype.x = 99
+
+
+  console.log(App.prototype.x)//显示原型属性
+  console.log(az)//隐式原型属性
+  console.log(App.prototype===az.__proto__)*/
+</script>
+</body>
+</html>
