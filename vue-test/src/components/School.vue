@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="demo">
     <h2 v-text="msg"></h2>
-    <h2 @click="showName">学校名称：{{ name }}</h2>
+    <h2>学校名称：{{ name }}</h2>
     <h2>学校地址：{{ address }}</h2>
   </div>
 </template>
@@ -11,19 +11,16 @@ export default {
   name:'School',
   data() {
     return {
-      msg:'School Model',
+      msg:'School Model',    
       name:'azSchool',
       address:'qwer'
-    }
-  },
-  methods:{
-    showName(){
-      alert(this.name)
     }
   }
 }
 </script>
 
-<style>
-
+<style scoped>
+  .demo{
+    background-color: aqua;
+  }
 </style>

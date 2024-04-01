@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="demo">
     <h2 v-text="msg"></h2>
-    <h2 @click="showName">学生姓名：{{ name }}</h2>
-    <h2>学生性别：{{ sex }}</h2>
+    <h2>学生姓名：{{ name }}</h2>
+    <h2 class="fs">学生性别：{{ sex }}</h2>
   </div>
 </template>
 
@@ -16,15 +16,15 @@ export default {
       name:'az',
       sex:'man'
     }
-  },
-  methods:{
-    showName(){
-      alert(this.name)
-    }
   }
 }
 </script>
 
-<style>
-
+<style lang="less">
+  .demo{
+    background-color: orange;
+    .fs{
+      font-size: 60px;
+    }
+  }
 </style>
