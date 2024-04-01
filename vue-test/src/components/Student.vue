@@ -1,19 +1,20 @@
 <template>
   <div>
     <h2 v-text="msg"></h2>
-    <h2 @click="showName">学校名称：{{ name }}</h2>
-    <h2>学校地址：{{ address }}</h2>
+    <h2 @click="showName">学生姓名：{{ name }}</h2>
+    <h2>学生性别：{{ sex }}</h2>
   </div>
 </template>
 
 <script>
+
 export default {
-  name:'School',
+  name:'Student',
   data() {
     return {
-      msg:'School Model',
-      name:'azSchool',
-      address:'qwer'
+      msg:'Student Model',
+      name:'az',
+      sex:'man'
     }
   },
   methods:{

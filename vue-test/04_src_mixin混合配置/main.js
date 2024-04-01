@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
-import plugins from './plugins'
-
+import {hunhe} from './mixin'
 
 Vue.config.productionTip = false
 
-//使用自定义插件
-Vue.use(plugins)
+//全局混合
+Vue.mixin(hunhe)
 
 new Vue({
   render:h=>h(App)

@@ -19,8 +19,6 @@ Vue.config.productionTip = false
  * 
  */
 
-
-
 //创建vue的实例对象--vm
 new Vue({
   //将app组件放入容器中

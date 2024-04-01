@@ -1,12 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import plugins from './plugins'
 
-
+//关闭提示
 Vue.config.productionTip = false
-
-//使用自定义插件
-Vue.use(plugins)
 
 new Vue({
   render:h=>h(App)
