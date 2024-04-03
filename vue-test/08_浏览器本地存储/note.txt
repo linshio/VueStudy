@@ -1,0 +1,19 @@
+ webStorage
+  1.存储内容的大小一般支持5M左右
+  2.浏览器通过Window.sessionStorage和Window.localStorage属性来实现本地存储机制。
+  3.相关api
+    1）xxxStorage,setItem('key','value');
+      该方法会接受一个键和值作为参数会把键和值添加到存储中，如果键存在的话，折更新其对应的值
+    2）xxxStorage,getItem(key);
+      该方法会接受一个键作为参数 返回键名对应的值
+    3）xxxStorage,removeItem('key');
+      该方法会接受一个键作为参数，如果键存在的话，则删除其对应的值  
+    4）xxxStorage,clear();
+      该方法会清空存储中的所有数据
+  4.备注
+    1）sessionStorage中存放的内容会随着浏览器的关闭而消失
+    2）localStorage中存储的内容需要进行手动清楚才会消失
+    3）xxxStorage,getItem(key);如果get不到值则返回null
+    4）JSON.parse(null)的结果依然是null
+
+      
