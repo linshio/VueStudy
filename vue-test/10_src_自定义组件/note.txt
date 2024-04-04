@@ -1,0 +1,19 @@
+组件的自定义事件
+1.一种组件间的通信方式，适用于 子组件==>父组件
+2.使用场景：A是父组件，B是子组件，那么就要在A中给B绑定自定义事件（事件的回调在A中）
+3.绑定自定义事件：
+  1）第一种方式，在父组件中<Student v-on:az="getStudentName"></Student>
+      或者<Student @az="getStudentName"></Student>‘
+  2）第二种方式，在父组件中：
+      mounted() {
+      //绑定自定义事件 
+      this.$refs.student.$on('az',this.getStudentName)
+      //只能点击触发一次
+      // this.$refs.student.$once('az',this.getStudentName)
+    }
+  3）若想要让自定义事件只能够触发一次，可以使用 once 修饰符或者 $once 方法
+4.触发自定义事件：this.$emit('az'，数据)
+5.解绑自定义事件：this.$off('az')
+6.组件上也可以绑定原生DOM事件，需要使用native修饰符
+7.注意：通过this.$refs.xxx.$on('az',回调)绑定自定义事件的时候，回调要么配置methods中，
+       要么使用箭头函数，否则this指向会出问题！
