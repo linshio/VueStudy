@@ -1,0 +1,26 @@
+全局事件总线
+  1.一种组件中进行通信的方式，适用于任意组件之间的通信
+  2.安装全局事件总线
+    new Vue({
+      ...
+      beforeCreate() {
+        Vue.prototype.$bus = this//安装全局事件总线,$bus就是当前应用的vm
+      }
+      ...
+    })
+  3.使用事件总线
+    1.接收数据，A组件想要接收数据则在A组件中给$bus绑定自定义组件，事件的回调留在A组件本身
+      mounted(){
+        this.$bus.$on('hello',(data)=>{console.log('school ====>',data);})
+      }
+
+    2.提供数据
+      methods:{
+        sendNameForSchool(){
+          this.$bus.$emit('hello',this.name)
+        }
+      }
+  4.最好在beforeDestroy钩子中，使用$off去解绑当前组件所用到的事件
+      beforeDestroy() {
+        this.$bus.$off('hello')
+      }

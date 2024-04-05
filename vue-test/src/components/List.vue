@@ -3,8 +3,7 @@
     <Item v-for="todo in todos"
      :key="todo.id" 
      :todoObj="todo" 
-     :checkTodo="checkTodo"
-     :delTodo="delTodo"></Item>
+     ></Item>
   </ul>
 </template>
 
@@ -13,7 +12,7 @@ import Item from './Item.vue';
 export default {
   name:'List',
   components:{Item},
-  props:['todos','checkTodo','delTodo']
+  props:['todos'],
 }
 </script>
 

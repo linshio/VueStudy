@@ -3,7 +3,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader ref="addTodo"></MyHeader>
-        <List :todos="todos" :checkTodo="checkTodo" :delTodo="delTodo"></List>
+        <List :todos="todos"></List>
         <MyFooter :todos="todos" @checkAllTodo="checkAllTodo" @clearAllTodo="clearAllTodo"></MyFooter>
       </div>
     </div>
@@ -64,6 +64,13 @@ export default {
   },
   mounted() {
     this.$refs.addTodo.$on('addTodo',this.addTodo)
+    //给$bus添加绑定事件
+    this.$bus.$on('checkTodo',this.checkTodo)
+    this.$bus.$on('delTodo',this.delTodo)
+  },
+  beforeDestroy() {
+    this.$bus.$off('checkTodo')
+    this.$bus.$off('delTodo')
   },
 }
 </script>
