@@ -52,14 +52,6 @@ export default {
       this.todos = this.todos.filter((todo)=>{
         return !todo.done
       })
-    },
-    //编辑数据
-    editTodo(todoId,value){
-      this.todos.forEach(todo => {
-        if(todo.id===todoId){
-          todo.title = value
-        }
-      });
     }
   },
   watch:{
@@ -78,16 +70,12 @@ export default {
     // this.$bus.$on('delTodo',this.delTodo)
     //订阅事件
     this.pubId = PubSub.subscribe('delTodo',this.delTodo)
-    // this.pubEditId = PubSub.subscribe('editTodo',this.editTodo)
-    
-    this.$bus.$on('editTodo',this.editTodo)
   },
   beforeDestroy() {
     this.$bus.$off('checkTodo')
     // this.$bus.$off('delTodo')
     //销毁订阅
     PubSub.unsubscribe(this.pubId)
-    // PubSub.unsubscribe(this.pubEditId)
   },
 }
 </script>
@@ -115,13 +103,6 @@ export default {
     color: #fff;
     background-color: #da4f49;
     border: 1px solid #bd362f;
-  }
-
-  .btn-edit {
-    color: #fff;
-    background-color: skyblue;
-    border: 1px solid rgb(90, 139, 158);
-    margin-right: 5px;
   }
 
   .btn-danger:hover {

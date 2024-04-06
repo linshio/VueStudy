@@ -2,14 +2,9 @@
   <li>
     <label>
       <input type="checkbox" :checked="todoObj.done" @change="handelCheck(todoObj.id)"/>
-      <span v-show="!todoObj.isEdit">{{ todoObj.title }}</span>
-      <input v-show="todoObj.isEdit"
-       type="text" :value="todoObj.title"
-       @blur="handleBlur(todoObj,$event)"
-       ref="inputTitle">
+      <span>{{ todoObj.title }}</span>
     </label>
     <button class="btn btn-danger" @click="handleDel(todoObj.id)">删除</button>
-    <button v-show="!todoObj.isEdit" class="btn btn-edit" @click="handleEdit(todoObj)">编辑</button>
   </li>
 </template>
 
@@ -30,27 +25,6 @@ export default {
         //触发事件
         PubSub.publish('delTodo',id)
       }
-    },
-    handleEdit(todoObj){
-      //isEdit该属性添加过一次就会存在，不需要每次点击都添加
-      if(todoObj.hasOwnProperty('isEdit')){
-        todoObj.isEdit = true
-      }else{
-        //设置当前的状态是 编辑中
-        this.$set(todoObj,'isEdit',true)
-      }
-      //$nextTick该函数会在下一次DOM更新结束后执行其指定的回调
-      this.$nextTick(function(){
-        this.$refs.inputTitle.focus()
-      })
-    },
-    //失去焦点的回调函数
-    handleBlur(todoObj,e){ 
-      // PubSub.publish('editTodo',todoObj.id,e.target.value)
-      todoObj.isEdit = false
-      if(!e.target.value.trim()) return alert('输入不能为空！')
-      this.$bus.$emit('editTodo',todoObj.id,e.target.value)
-      
     }
   }
 }

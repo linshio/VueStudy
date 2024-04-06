@@ -14,7 +14,6 @@
 import MyHeader from './components/MyHeader.vue'
 import List from './components/List'
 import MyFooter from './components/MyFooter.vue'
-import PubSub from 'pubsub-js'
 export default {
   name:'App',
   components:{MyHeader,List,MyFooter},
@@ -38,7 +37,7 @@ export default {
       })
     },
     //删除对应的对象
-    delTodo(_,id){
+    delTodo(id){
       this.todos = this.todos.filter(todo=>todo.id!==id) 
     },
     //全选或者取消全选
@@ -52,14 +51,6 @@ export default {
       this.todos = this.todos.filter((todo)=>{
         return !todo.done
       })
-    },
-    //编辑数据
-    editTodo(todoId,value){
-      this.todos.forEach(todo => {
-        if(todo.id===todoId){
-          todo.title = value
-        }
-      });
     }
   },
   watch:{
@@ -75,19 +66,11 @@ export default {
     this.$refs.addTodo.$on('addTodo',this.addTodo)
     //给$bus添加绑定事件
     this.$bus.$on('checkTodo',this.checkTodo)
-    // this.$bus.$on('delTodo',this.delTodo)
-    //订阅事件
-    this.pubId = PubSub.subscribe('delTodo',this.delTodo)
-    // this.pubEditId = PubSub.subscribe('editTodo',this.editTodo)
-    
-    this.$bus.$on('editTodo',this.editTodo)
+    this.$bus.$on('delTodo',this.delTodo)
   },
   beforeDestroy() {
     this.$bus.$off('checkTodo')
-    // this.$bus.$off('delTodo')
-    //销毁订阅
-    PubSub.unsubscribe(this.pubId)
-    // PubSub.unsubscribe(this.pubEditId)
+    this.$bus.$off('delTodo')
   },
 }
 </script>
@@ -115,13 +98,6 @@ export default {
     color: #fff;
     background-color: #da4f49;
     border: 1px solid #bd362f;
-  }
-
-  .btn-edit {
-    color: #fff;
-    background-color: skyblue;
-    border: 1px solid rgb(90, 139, 158);
-    margin-right: 5px;
   }
 
   .btn-danger:hover {
