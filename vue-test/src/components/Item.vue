@@ -4,9 +4,9 @@
       <input type="checkbox" :checked="todoObj.done" @change="handelCheck(todoObj.id)"/>
       <span v-show="!todoObj.isEdit">{{ todoObj.title }}</span>
       <input v-show="todoObj.isEdit"
-       type="text" :value="todoObj.title"
-       @blur="handleBlur(todoObj,$event)"
-       ref="inputTitle">
+        type="text" :value="todoObj.title"
+        @blur="handleBlur(todoObj,$event)"
+        ref="inputTitle">
     </label>
     <button class="btn btn-danger" @click="handleDel(todoObj.id)">删除</button>
     <button v-show="!todoObj.isEdit" class="btn btn-edit" @click="handleEdit(todoObj)">编辑</button>
@@ -98,6 +98,23 @@ export default {
 
   li:hover button{
     display: block;
+  }
+
+  .todo-enter-active{
+    animation: az 0.5s linear;
+  }
+
+  .todo-leave-active{
+    animation: az 0.5s linear reverse;
+  }
+
+  @keyframes az{
+    from{
+      transform: translateX(100%);
+    }
+    to{
+      transform: translateX(0%);
+    }
   }
 
 </style>

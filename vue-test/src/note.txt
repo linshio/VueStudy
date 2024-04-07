@@ -1,10 +1,1 @@
-$nextTick
-
-语法==> 
-  this.$nextTick(function(){
-    ……
-  })
-
-作用==>该函数会在下一次DOM更新结束后执行其指定的回调
-
-什么时候使用：当改变数据的时候，要基于更新后的Dom进行某些操作是，要在nextTick函数中进行
+给TodoList上面添加动画效果
