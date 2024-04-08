@@ -1,0 +1,4 @@
+vue-resource插件的使用
+安装npm i vue-resource
+
+我们也可以使用vue-resource插件发送请求
