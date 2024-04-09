@@ -7,6 +7,14 @@ import Vue from 'vue'
 Vue.use(Vuex)
 //准备actions--用于响应组件中的动作
 const actions = {
+  // add(context,value){
+  //   // console.log('a==>',context);
+  //   // console.log('b==>',value);
+  //   context.commit('ADD',value)
+  // },
+  // sub(context,value){
+  //   context.commit('SUB',value)
+  // },
   addOdd(context,value){
     if(context.state.sum%2){
       context.commit('ADD',value)
@@ -22,6 +30,9 @@ const actions = {
 //准备mutations--用于操作数据(state)
 const mutations = {
   ADD(state,value){
+    // console.log('a==>',state);
+    // console.log('b==>',value);
+    // console.log('mutations is done');
     state.sum += value
   },
   SUB(state,value){
@@ -33,17 +44,9 @@ const state = {
   sum:0//总和数字
 }
 
-//用于将state中的数据进行加工处理
-const getters = {
-  bigSum(state){
-    //将数据进行加工
-    return state.sum*10
-  }
-}
 //创建并暴露store
 export default new Vuex.Store({
   actions:actions,
-  mutations,
-  state:state,
-  getters
+  mutations:mutations,
+  state:state
 })
