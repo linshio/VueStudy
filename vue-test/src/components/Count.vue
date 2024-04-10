@@ -4,6 +4,7 @@
     <h2>当前加工后的值为 {{ bigSum }}</h2>
     <h3>学校：{{ school }}</h3>
     <h3>主题：{{ subject }}</h3>
+    <h4>下方组件的总人数为：{{ personList.length }}</h4>
     <select v-model.number="n">
       <option :value="1">1</option>
       <option :value="2">2</option>
@@ -31,7 +32,7 @@ export default {
     // ...mapState({sum:'sum',school:'school',subject:'subject'}),
 
     //以上对象写法的简写形式 （数组写法）
-    ...mapState(['sum','school','subject']),
+    ...mapState(['sum','school','subject','personList']),
 
     //借助mapGetters生成计算属性,从mapGetters中读取数据。(数组写法) 同理也有对象写法
     ...mapGetters(['bigSum'])

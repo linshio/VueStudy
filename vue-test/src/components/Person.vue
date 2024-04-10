@@ -22,13 +22,15 @@ export default {
   computed:{
     personList(){
       return this.$store.state.personList
-    }
+    },
     // ...mapState(['personList'])
+
+      
   },
   methods: {
     add(){
       const personObj = {id:nanoid(),name:this.name}
-      this.$store.commit('',personObj)
+      this.$store.commit('ADD_PERSON',personObj)
       this.name=''
     }
   },

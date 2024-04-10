@@ -26,6 +26,9 @@ const mutations = {
   },
   SUB(state,value){
     state.sum-=value
+  },
+  ADD_PERSON(state,value){
+    state.personList.unshift(value)
   }
 }
 //准备state--用于存储数据
