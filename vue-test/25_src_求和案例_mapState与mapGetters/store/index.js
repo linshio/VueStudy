@@ -32,10 +32,7 @@ const mutations = {
 const state = {
   sum:0,//总和数字
   school:'az',
-  subject:'kao',
-  personList:[
-    {id:'001',name:'张三'}
-  ]
+  subject:'kao'
 }
 
 //用于将state中的数据进行加工处理
