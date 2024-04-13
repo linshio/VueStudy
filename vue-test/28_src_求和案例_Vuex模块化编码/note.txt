@@ -1,0 +1,103 @@
+vuex模块化
+
+修改store/index.js
+
+  import countConfig from './count'
+  import personConfig from './person'
+  //使用vuex插件
+  Vue.use(Vuex)
+
+  //创建并暴露store
+  export default new Vuex.Store({
+    //同名的两种写法
+    // dataConfig,
+    modules:{
+      countAbout:countConfig,
+      personAbout:personConfig
+    }
+  })
+
+count.js  ==> Count.vue
+
+  //数据处理配置
+  export default{
+    namespaced:true,
+    actions:{
+      addOdd(context,value){
+        if(context.state.sum%2){
+          context.commit('ADD',value)
+        }
+        console.log(context);
+      },
+      addWait(context,value){
+        setTimeout(() => {
+          context.commit('ADD',value)
+        }, 500);
+      }
+    },
+    mutations:{
+      ADD(state,value){
+        state.sum += value
+      },
+      SUB(state,value){
+        state.sum-=value
+      }
+    },
+    state:{
+      sum:0,//总和数字
+      school:'az',
+      subject:'kao'
+    },
+    getters:{
+      bigSum(state){
+        //将数据进行加工
+        return state.sum*10
+      }
+    }
+  }
+
+
+perosn.js  ==> Person.vue
+
+  //人员信息配置
+  import axios from 'axios'
+  import { nanoid } from 'nanoid'
+  export default {
+    namespaced:true,
+    actions:{
+      //添加的只能是性梁的
+      addPersonLiang(context,value){
+        if(value.name.indexOf('梁')===0){
+          context.commit('ADD_PERSON',value)
+        }else{
+          alert('添加的只能是姓梁的')
+        }
+      },
+      addPersonServer(context){
+        axios.get('http://localhost:8888/uuid').then(
+          response=>{
+            context.commit('ADD_PERSON',{id:nanoid,name:response.data})
+          },
+          error =>{
+            alert(error.message)
+          }
+        )
+      }
+    },
+    mutations:{
+      ADD_PERSON(state,value){
+        state.personList.unshift(value)
+      }
+    },
+    state:{
+      personList:[
+        {id:'001',name:'张三'}
+      ]
+    },
+    //获取到第一个人的名字
+    getters:{
+      firstPersonName(state){
+        return state.personList[0].name
+      }
+    }
+  }

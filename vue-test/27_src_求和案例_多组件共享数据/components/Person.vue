@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>人员列表</h1>
+    <h3>count组件的值为{{ sum }}</h3>
     <input type="text" placeholder="请输入名字" v-model="name">
     <button @click="add">添加</button>
     <ul>
@@ -23,8 +24,8 @@ export default {
     personList(){
       return this.$store.state.personList
     },
-    // ...mapState(['personList'])
-
+     ...mapState(['sum'])
+    
       
   },
   methods: {
