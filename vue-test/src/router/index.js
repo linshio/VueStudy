@@ -2,9 +2,9 @@
 import VueRouter from 'vue-router'
 import About from '../components/About.vue'
 import Home from '../components/Home.vue'
-//创建一个路由器
+//创建并暴露一个路由器
 export default new VueRouter({
-  routers:[
+  routes:[
     {
       path:'/about',
       component:About

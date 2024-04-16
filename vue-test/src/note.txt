@@ -1,4 +1,4 @@
 vue路由
 
-安装路由 npm i vue-router@3
+安装路由 npm i vue-router@3 (支持vue2)
 

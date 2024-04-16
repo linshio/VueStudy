@@ -1,4 +1,4 @@
-<<template>
+<template>
   <div>
     <h2>我是Home的内容</h2>
   </div>
@@ -9,7 +9,3 @@
     name:'Home'
   }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
