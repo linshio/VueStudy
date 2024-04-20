@@ -1,11 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-xs-offset-2 col-xs-8">
-        <div class="page-header"><h2>Vue Router Demo</h2></div>
-      </div>
-    </div>
-    <div class="row">
+      <Banner></Banner>
       <div class="col-xs-2 col-xs-offset-2">
         <div class="list-group">
           <!-- 原始html中我们使用a标签实现页面的跳转 -->
@@ -30,8 +26,12 @@
 </template>
 
 <script>
+import Banner from './components/Banner.vue'
 export default {
-  name:'App'
+  name:'App',
+  components:{
+    Banner
+  }
 }
 </script>
 
