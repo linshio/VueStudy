@@ -61,34 +61,3 @@ vue路由
     </router-link>&nbsp;&nbsp;
 
 注意事项==> 路由携带params参数的时候，若使用to的对象写法，则不能够使用path配置项，必须使用name配置
-
-
-5.<router-link>的replace属性
-  1.作用：控制路由跳转时操作浏览器历史记录的模式
-  2.浏览器的历史记录有两种写入方式哦：分别为push和replace,push为追加的历史记录,replace是替换当前的记录,路由跳转的时候默认为push
-  3，如何开启replace模式 加上replace属性即可
-    <router-link class="list-group-item" replace active-class="active" to="/home/news">News</router-link>
-
-6.编程式路由导航
-  1）不借助<router-link></router-link>实现路由的跳转，可以让跳转更加的灵活
-  2）
-    this.$router.back()//后退
-    this.$router.forward()//前进
-    this.$router.go()//随意跳转 正数为向前跳转几次 负数可以向后跳转几次
-
-7.缓存路由组件
-  1.作用：让不展示的路由组件保持挂载，不让销毁
-  2.具体编码  include="News" 其中的News为组件名，不是路由名
-      <keep-alive include="News">
-        <router-view></router-view>
-      </keep-alive>
-
-  3.缓存多个组件的写法：
-      <keep-alive :include="['News','Message']">
-        <router-view></router-view>
-      </keep-alive>
-8.两个新的生命周期钩子
-  1.作用：路由组件所独有的两个钩子，用于捕获路由组件的激活状态。
-  2具体名字：
-    1.activated()   路由组件被激活的时候进行触发
-    2.deactivated() 路由组件失活的时候进行触发

@@ -25,26 +25,9 @@ export default new VueRouter({
               name:'xiangqing',
               path:'detail/:id/:title',
               // path:'detail',
-              component:Detail,
-              //props的第一种用法，值为对象，该对象中所有的k v都会以props的形式传给Detail组件
-              // props:{
-              //   a:1,
-              //   b:'hello'
-              // }
-
-              //props的第二种写法，值为bolean，若该值为真，就会把该路由组件中收到的所有params参数，以props的形式传给Detail组件
-              // props:true
-              
-              //props的第三种写法，直接返回一个回调函数
-              props($route){
-                return {
-                  id:$route.params.id,
-                  title:$route.params.title
-                }
-              } 
+              component:Detail  
             }
           ]
-
         },
         {
           path:'news',

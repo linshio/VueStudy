@@ -26,8 +26,6 @@
         }">
           {{ item.title }}
         </router-link>&nbsp;&nbsp;
-        <button @click="pushShow(item)">push查看</button>
-        <button @click="replaceShow(item)">replace查看</button>
       </li>
     </ul>
     <router-view></router-view>
@@ -45,30 +43,7 @@
           {id:'003',title:'消息003'},
         ]
       }
-    }, 
-    methods: {
-      pushShow(item){
-        this.$router.push({
-          name:'xiangqing',
-          params:{
-            id: item.id,
-            title: item.title
-          }
-        })
-      },
-      replaceShow(item){
-        this.$router.replace({
-          name:'xiangqing',
-          params:{
-            id: item.id,
-            title: item.title
-          }
-        })
-      }
     },
-    beforeDestroy(){
-      console.log("message is dead");
-    }
   }
 </script>
 
