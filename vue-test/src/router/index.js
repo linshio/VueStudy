@@ -6,7 +6,7 @@ import Message from '../pages/Message.vue'
 import News from '../pages/News.vue'
 import Detail from '../pages/Detail.vue'
 //创建并暴露一个路由器
-export default new VueRouter({
+const router =  new VueRouter({
   routes:[
     {
       name:'guanyu',
@@ -54,3 +54,14 @@ export default new VueRouter({
     }
   ]
 }) 
+
+//全局前置路由守卫----每次路由切换之前会被调用
+//初始化的时候会被调用
+//在每一次路由切换之前都会帮助我调用这个函数
+router.beforeEach((to,from,next)=>{
+  console.log('to ==> ',to);
+  console.log('from ==> ',from);
+  console.log('next ==> ',next);
+})
+
+export default router
