@@ -11,15 +11,23 @@ const router =  new VueRouter({
     {
       name:'guanyu',
       path:'/about',
-      component:About
+      component:About,
+      meta:{title:'关于'}
     },
     {
       path:'/home',
+      name:'zhuye',
       component:Home,
+      meta:{title:'主页'},
       children:[
         {
           path:'message',
+          name:'message',
           component:Message,
+          meta:{
+            isAuth:true,
+            title:'消息'
+          },
           children:[ 
             {
               name:'xiangqing',
@@ -48,7 +56,15 @@ const router =  new VueRouter({
         },
         {
           path:'news',
-          component:News
+          name:'news',
+          component:News,
+          meta:{
+            isAuth:true,
+            title:'新闻'
+          },
+          beforeEnter: (to, from, next) => {
+            
+          }
         }
       ]
     }
@@ -58,10 +74,32 @@ const router =  new VueRouter({
 //全局前置路由守卫----每次路由切换之前会被调用
 //初始化的时候会被调用
 //在每一次路由切换之前都会帮助我调用这个函数
-router.beforeEach((to,from,next)=>{
-  console.log('to ==> ',to);
-  console.log('from ==> ',from);
-  console.log('next ==> ',next);
-})
+//to   ==> 需要切换到的目的地路由，要去哪
+//from ==> 当前切换出去的路由，来自哪个路由
+//next ==> 放行函数
+// router.beforeEach((to,from,next)=>{
+//   console.log('beforeEach==>>');
+//   console.log('to ==> ',to);
+//   console.log('from ==> ',from);
+//   if(to.meta.isAuth){//判断是否需要进行鉴权
+//     if(localStorage.getItem('school')==='linshio'){
+//       next()
+//     }else{
+//       alert('无权限')
+//     }
+//   }else{
+//     next()
+//   }
+// })
+
+
+//全局后置路由守卫----每次路由切换之后会被调用
+// router.afterEach((to,from)=>{
+//   console.log('afterEach==>>');
+//   console.log('to ==> ',to);
+//   console.log('from ==> ',from);
+//   document.title = to.meta.title || '无'
+// })
+
 
 export default router
