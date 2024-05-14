@@ -125,3 +125,59 @@ vue路由
       console.log('from ==> ',from);
       document.title = to.meta.title || '无'
     })
+
+10.独享路由守卫
+  和路由守卫的用法几乎一样，但是只有前置的路由守卫，对单独的组件生效
+  用法：
+    beforeEnter: (to, from, next) => {
+      console.log('to ==> ', to);
+      console.log('from ==> ', from);
+      if (to.meta.isAuth) {//判断是否需要进行鉴权
+        if (localStorage.getItem('school') === 'linshio') {
+          next()
+        } else {
+          alert('无权限')
+        }
+      } else {
+        next()
+      }
+    }
+11.组件内路由守卫
+
+ 1）.通过路由规则，进入该组件中被调用
+  beforeRouteEnter (to, from, next) {
+    console.log('App-->beforeRouteEnter');
+    console.log('to ==> ', to);
+    console.log('from ==> ', from);
+    if (to.meta.isAuth) {//判断是否需要进行鉴权
+      if (localStorage.getItem('school') === 'linshio') {
+        next()
+      } else {
+        alert('无权限')
+      }
+    } else {
+      next()
+    }
+  },
+
+  2）.通过路由规则，离开该组件中被调用
+  beforeRouteLeave (to, from, next) {
+    console.log('App-->beforeRouteLeave');
+    console.log('to ==> ', to);
+    console.log('from ==> ', from);
+    next()
+  }
+
+
+12.路由器的两种工作模式
+项目打包命令 ==> npm run build
+  1.对于一个url来说，什么是hash值？ ==> #及其后面的内容就是hash值
+  2.hash值不会包含在http的请求当中，即：hash值不会带给服务器
+  3.hash模式：
+    1）地址中永远带着#号。不美观
+    2）若以后将地址通过第三方手机app进行分享，若app校验严格，则地址会被标记为不合法
+    3）兼容性较好
+  4.history模式
+    1）地址干净，比较美观
+    2）兼容性比起hash来说略差
+    3）应用部署上线的时候需要后端人员进行支持，解决刷新页面服务端404的问题

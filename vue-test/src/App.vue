@@ -28,11 +28,9 @@
 <script>
 import Banner from './components/Banner.vue'
 export default {
-  name:'App',
-  components:{
+  name: 'App',
+  components: {
     Banner
   }
 }
 </script>
-
- 
